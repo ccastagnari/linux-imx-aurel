@@ -16,6 +16,7 @@
 		fsl,pins = <
 			MX6ULL_PAD_SNVS_TAMPER4__GPIO5_IO04	0x1b0b0	/* BT Enable */
 			MX6ULL_PAD_SNVS_TAMPER6__GPIO5_IO06	0x03029	/* WLAN Enable */
+			MX6ULL_PAD_SNVS_TAMPER3__GPIO5_IO03	0x17059 /* Master reset */
 		>;
 	};
 
@@ -24,9 +25,33 @@
 			MX6ULL_PAD_SNVS_TAMPER0__GPIO5_IO00	0x1b0b0 /* fec1 reset */
 		>;
 	};
+	
+	pinctrl_gpio_leds2: gpio_ledsgrp2 {
+		fsl,pins = <
+			MX6ULL_PAD_SNVS_TAMPER1__GPIO5_IO01	0x30 /* LED-A */
+			MX6ULL_PAD_SNVS_TAMPER5__GPIO5_IO05	0x30 /* LED-B */
+			MX6ULL_PAD_SNVS_TAMPER7__GPIO5_IO07	0x30 /* LED-C */
+			MX6ULL_PAD_SNVS_TAMPER8__GPIO5_IO08	0x30 /* LED-D */
+			MX6ULL_PAD_SNVS_TAMPER9__GPIO5_IO09	0x30 /* LED-E */
+		>;
+	};	
+};
+
+&iomuxc {
+	pinctrl_adc: adc {
+		fsl,pins = <			
+			MX6UL_PAD_GPIO1_IO01__GPIO1_IO01	0xb0
+			MX6UL_PAD_GPIO1_IO02__GPIO1_IO02	0xb0
+			MX6UL_PAD_GPIO1_IO04__GPIO1_IO04	0xb0
+			MX6UL_PAD_GPIO1_IO05__GPIO1_IO05	0xb0
+		>;
+	};
 };
 
 &adc1 {
+	pinctrl-names = "default";
+	pinctrl-0 = <&pinctrl_adc>;
+	num-channels = <6>;
 	vref-supply = <&touch_3v3_regulator>;
 	status = "okay";
 };
