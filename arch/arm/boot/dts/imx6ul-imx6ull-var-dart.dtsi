@@ -13,7 +13,7 @@
 
 	pxp_v4l2 {
 		compatible = "fsl,imx6ul-pxp-v4l2", "fsl,imx6sx-pxp-v4l2", "fsl,imx6sl-pxp-v4l2";
-		status = "okay";
+		status = "disabled";
 	};
 
 	regulators {
@@ -88,32 +88,6 @@
 	arm-supply = <&reg_arm>;
 	soc-supply = <&reg_soc>;
 	dc-supply = <&reg_gpio_dvfs>;
-};
-
-&fec1 {
-	pinctrl-names = "default";
-	pinctrl-0 = <&pinctrl_enet1>, <&pinctrl_enet1_gpio>, <&pinctrl_enet1_mdio>;
-	phy-mode = "rmii";
-	phy-handle = <&ethphy0>;
-	status = "okay";
-
-	mdio {
-		#address-cells = <1>;
-		#size-cells = <0>;
-
-		ethphy0: ethernet-phy@1 {
-			compatible = "ethernet-phy-ieee802.3-c22";
-			micrel,rmii-reference-clock-select-25-mhz;
-			micrel,led-mode = <1>;
-			reset-names = "phy";
-			reset-gpios = <&gpio5 0 GPIO_ACTIVE_LOW>;
-			reset-assert-us = <10000>;
-			reset-deassert-us = <100000>;
-			clocks = <&rmii_ref_clk>;
-			clock-names = "rmii-ref";
-			reg = <1>;
-		};
-	};
 };
 
 &gpc {
@@ -250,7 +224,7 @@
 };
 
 &pxp {
-	status = "okay";
+	status = "disabled";
 };
 
 &sai2 {
