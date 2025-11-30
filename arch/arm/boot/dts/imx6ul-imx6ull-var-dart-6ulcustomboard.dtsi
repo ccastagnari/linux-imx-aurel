@@ -95,7 +95,10 @@
 	pinctrl_gpio_other: gpioothergrp {
 		fsl,pins = <
 			MX6UL_PAD_UART3_RTS_B__GPIO1_IO27	0x17059 /* tamper sw */
-			MX6UL_PAD_LCD_DATA00__GPIO3_IO05	0x10030 /* enable ricarica */		
+			MX6UL_PAD_LCD_DATA00__GPIO3_IO05	0x10030 /* enable ricarica */
+			MX6UL_PAD_UART1_CTS_B__GPIO1_IO18   0x1b0b0	/* production test mode */
+			MX6UL_PAD_UART1_RTS_B__GPIO1_IO19   0x1b0b0 /* ready signal */
+			MX6UL_PAD_CSI_DATA01__GPIO4_IO22    0x1b0b0 /* battery switch */
 		>;	
 	};	
 	
